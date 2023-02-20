@@ -1,4 +1,4 @@
-// node of singly linked list (used in libft)
+node of singly linked list (used in libft)
 
 typedef struct s_list
 {
@@ -6,12 +6,12 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-// node of doubly linked list (for push_swap)
+node of doubly linked list (for push_swap)
 
 typedef struct	s_deque_node
 {
 	int					num;		// number to be sorted
-	unsigned int		idx;		// input order of the number
+	// unsigned int		idx;		// input order of the number
 	struct s_deque_node	*prev; 		// node previous to the current
 	struct s_deque_node	*next;	 	// node next to the current
 }	t_deque_node;

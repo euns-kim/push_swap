@@ -6,17 +6,17 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 21:49:39 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/15 22:15:19 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/02/20 14:18:39 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "push_swap.h"
 
 int	reverse_rotate(t_s *stack)
 {
 	if (stack->cnt < 2)
 		return (0);
-	add_front(stack, rm_back(stack));
+	enque(stack, deque(stack, BACK), FRONT);
 	return (1);
 }
 
@@ -24,7 +24,7 @@ int	rotate(t_s *stack)
 {
 	if (stack->cnt < 2)
 		return (0);
-	add_back(stack, rm_front(stack));
+	enque(stack, deque(stack, FRONT), BACK);
 	return (1);
 }
 
@@ -35,10 +35,10 @@ int	swap(t_s *stack)
 
 	if (stack->cnt < 2)
 		return (0);
-	tmp = rm_front(stack);
-	tmp2 = rm_front(stack);
-	add_front(stack, tmp);
-	add_front(stack, tmp2);
+	tmp = deque(stack, FRONT);
+	tmp2 = deque(stack, FRONT);
+	enque(stack, tmp, FRONT);
+	enque(stack, tmp2, FRONT);
 	return (1);
 }
 
@@ -46,6 +46,6 @@ int	push(t_s *from, t_s *to)
 {
 	if (from->cnt < 1)
 		return (0);
-	add_front(to, rm_front(from));
+	enque(to, deque(from, 0), 0);
 	return (1);
 }
