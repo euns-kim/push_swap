@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/22 22:44:32 by eunskim          ###   ########.fr       */
+/*   Created: 2023/02/22 17:44:48 by eunskim           #+#    #+#             */
+/*   Updated: 2023/02/22 20:58:56 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <stdio.h>
 
-// input
-// - should be a number in the integer range
-// - cannot be duplicated
-
-// otherwise
-// "Error\n" in the standard error
-
-
-int	main(int argc, char **argv)
+typedef struct	s_stack
 {
-	char	**input;
-	if (argc < 2)
-		return (0);
-	if (argc == 2)
-	{
-		input = ft_split(argv[1], ' ');
-	}
+	int				*elements;
+	unsigned int	front;
+	unsigned int	back;
+	unsigned int	size;
+	unsigned int	max_size;
+}	t_st;
 
-	input_error_check();
-	init_stack();
-
-	// calloc() t_ps
-}
+typedef struct	s_push_swap
+{
+	t_st	a;
+	t_st	b;
+}	t_ps;

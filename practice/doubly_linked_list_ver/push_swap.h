@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 19:02:13 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/21 14:16:11 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/02/22 17:47:52 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,4 @@ int		rotate(t_s *stack);
 int		swap(t_s *stack);
 int		push(t_s *from, t_s *to);
 
-t_sn	*deque(t_s *s, t_end end);
-void	enque(t_s *s, t_sn *new, t_end end);
 
