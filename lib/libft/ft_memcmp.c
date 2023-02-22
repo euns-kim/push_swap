@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/22 15:56:21 by eunskim          ###   ########.fr       */
+/*   Created: 2022/10/19 17:51:14 by eunskim           #+#    #+#             */
+/*   Updated: 2022/10/20 14:52:19 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-// input
-// - should be a number in the integer range
-// - cannot be duplicated
-
-// otherwise
-// "Error\n" in the standard error
-
-
-int	main(int argc, char **argv)
+int	ft_memcmp(void *s1, void *s2, size_t n)
 {
-	if (argc < 2)
-		return (0);
-	if (argc == 2)
-		ft_split();
-	input_error_check();
-	init_stack();
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
 
-	// calloc() t_ps
+	str1 = s1;
+	str2 = s2;
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (i < n)
+	{
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		i++;
+	}
+	return (0);
 }

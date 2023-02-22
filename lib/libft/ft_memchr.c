@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/22 15:56:21 by eunskim          ###   ########.fr       */
+/*   Created: 2022/10/19 18:45:30 by eunskim           #+#    #+#             */
+/*   Updated: 2022/10/19 19:00:32 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h" 
 
-// input
-// - should be a number in the integer range
-// - cannot be duplicated
-
-// otherwise
-// "Error\n" in the standard error
-
-
-int	main(int argc, char **argv)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (argc < 2)
-		return (0);
-	if (argc == 2)
-		ft_split();
-	input_error_check();
-	init_stack();
+	unsigned char	*tmp;
 
-	// calloc() t_ps
+	tmp = (unsigned char *) s;
+	while (n > 0)
+	{
+		if ((unsigned char) c == *tmp)
+			return ((void *) tmp);
+		tmp++;
+		n--;
+	}
+	return (0);
 }

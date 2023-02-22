@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/22 15:56:21 by eunskim          ###   ########.fr       */
+/*   Created: 2022/10/28 15:31:54 by eunskim           #+#    #+#             */
+/*   Updated: 2022/10/28 16:16:56 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-// input
-// - should be a number in the integer range
-// - cannot be duplicated
-
-// otherwise
-// "Error\n" in the standard error
-
-
-int	main(int argc, char **argv)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (argc < 2)
-		return (0);
-	if (argc == 2)
-		ft_split();
-	input_error_check();
-	init_stack();
+	unsigned int	len;
+	unsigned int	i;
+	char			*newstring;
 
-	// calloc() t_ps
+	len = ft_strlen(s);
+	i = 0;
+	newstring = malloc (sizeof(char) * (len + 1));
+	if (newstring == 0)
+		return (0);
+	while (i < len)
+	{
+		*(newstring + i) = f (i, *(s + i));
+		i++;
+	}
+	newstring[len] = 0;
+	return (newstring);
 }

@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 12:15:52 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/21 13:37:58 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/02/21 17:33:48 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ t_sn	*deque(t_s *s, t_end end)
 	{
 		if (end == FRONT)
 		{	
-			s->node[0]->next = s->node[0];
+			s->node[0] = s->node[0]->next;
 			s->node[0]->prev = NULL;
+			if (s->cnt == 2)
+				s->node[1] = s->node[0];
 		}
 		else
 		{	
-			s->node[1]->prev = s->node[1];
+			s->node[1] = s->node[1]->prev;
 			s->node[1]->next = NULL;
 		}
 	}

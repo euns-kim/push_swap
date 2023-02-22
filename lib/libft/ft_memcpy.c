@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/22 15:56:21 by eunskim          ###   ########.fr       */
+/*   Created: 2022/10/17 21:08:09 by eunskim           #+#    #+#             */
+/*   Updated: 2022/10/20 20:43:55 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-// input
-// - should be a number in the integer range
-// - cannot be duplicated
-
-// otherwise
-// "Error\n" in the standard error
-
-
-int	main(int argc, char **argv)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	if (argc < 2)
-		return (0);
-	if (argc == 2)
-		ft_split();
-	input_error_check();
-	init_stack();
+	char	*cdst;
+	char	*csrc;
+	size_t	i;
 
-	// calloc() t_ps
+	if (n == 0)
+		return (dst);
+	if (dst == 0 && src == 0)
+		return (0);
+	cdst = (char *) dst;
+	csrc = (char *) src;
+	i = 0;
+	while (i < n)
+	{
+		cdst[i] = csrc[i];
+		i++;
+	}
+	return (dst);
 }

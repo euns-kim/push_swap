@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/22 15:56:21 by eunskim          ###   ########.fr       */
+/*   Created: 2022/10/28 22:08:24 by eunskim           #+#    #+#             */
+/*   Updated: 2022/10/28 22:28:54 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-// input
-// - should be a number in the integer range
-// - cannot be duplicated
-
-// otherwise
-// "Error\n" in the standard error
-
-
-int	main(int argc, char **argv)
+t_list	*ft_lstnew(void *content)
 {
-	if (argc < 2)
-		return (0);
-	if (argc == 2)
-		ft_split();
-	input_error_check();
-	init_stack();
+	t_list	*new;
 
-	// calloc() t_ps
+	new = NULL;
+	new = (t_list *) malloc (sizeof(t_list));
+	if (new == 0)
+		return (0);
+	new->content = content;
+	new->next = NULL;
+	return (new);
 }

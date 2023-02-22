@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   char_printer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/22 15:56:21 by eunskim          ###   ########.fr       */
+/*   Created: 2022/11/10 21:34:07 by eunskim           #+#    #+#             */
+/*   Updated: 2022/11/18 16:51:08 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../ft_printf.h"
 
-// input
-// - should be a number in the integer range
-// - cannot be duplicated
-
-// otherwise
-// "Error\n" in the standard error
-
-
-int	main(int argc, char **argv)
+int	ft_putchar(int c)
 {
-	if (argc < 2)
-		return (0);
-	if (argc == 2)
-		ft_split();
-	input_error_check();
-	init_stack();
+	write (1, &c, 1);
+	return (1);
+}
 
-	// calloc() t_ps
+int	ft_putnchar(int c, int n)
+{
+	int	i;
+
+	i = 0;
+	if (n <= 0)
+		return (0);
+	else
+	{
+		while (i < n)
+		{
+			write (1, &c, 1);
+			i++;
+		}
+	}
+	return (n);
+}
+
+int	ft_putnstr(char *str, int n)
+{
+	write (1, str, n);
+	return (n);
 }
