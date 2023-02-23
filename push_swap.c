@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/22 22:44:32 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/02/23 19:29:25 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 // otherwise
 // "Error\n" in the standard error
 
-
 int	main(int argc, char **argv)
 {
 	char	**input;
+
 	if (argc < 2)
 		return (0);
 	if (argc == 2)
