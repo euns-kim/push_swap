@@ -6,11 +6,37 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 23:58:20 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/25 01:21:46 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/02/26 00:04:53 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	dup_check(int *arr, size_t arr_len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < arr_len)
+	{
+		j = 0;
+		while (i + j < arr_len)
+		{
+			if (arr[i] == arr[i + j])
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+void	free_p(char	*p)
+{
+	if (p)
+		free(p);
+}
 
 void	free_array(char	**ptr)
 {
@@ -25,9 +51,9 @@ void	free_array(char	**ptr)
 	free(ptr);
 }
 
-unsigned int	len_check(char **arr)
+size_t	get_arr_len(char **arr)
 {
-	unsigned int	len;
+	size_t	len;
 
 	len = 0;
 	while (arr[len] != NULL)
@@ -37,31 +63,41 @@ unsigned int	len_check(char **arr)
 
 int	split_and_error_check(t_ps *ps, char *input)
 {
-	char			**input_splitted;
-	int				*tmp_arr;
-	unsigned int	arr_len;
-	long long		element;
+	char		**input_splitted;
+	int			*tmp_arr;
+	size_t		arr_len;
 
 	input_splitted = ft_split(input, ' ');
 	if (input_splitted == NULL)
-		return (0);
-	arr_len = len_check(input_splitted);
+		return (EXIT_FAILURE);
+	tmp_arr = NULL;
+	arr_len = get_arr_len(input_splitted);
+	if (!(parse_only_int(arr_len, input_splitted, &tmp_arr))
+		|| !(dup_check(tmp_arr, arr_len)))
+	{
+		free_p(tmp_arr);
+		free_array(input_splitted);
+		return (EXIT_FAILURE);
+	}
+	ps->a.elements = tmp_arr;
+	return (EXIT_SUCCESS);
+}
+
+int	parse_only_int(size_t arr_len, char	**input_arr, int **tmp_arr)
+{
+	size_t		idx;
+	long long	element;
+
+	idx = 0;
 	tmp_arr = ft_calloc(arr_len, sizeof(int));
 	if (tmp_arr == NULL)
+		return (EXIT_FAILURE);
+	while (idx < arr_len)
 	{
-		ft_printf("Calloc failed./n");
-		exit(EXIT_FAILURE);
+		if (!(int_checker(input_arr[idx], &element)))
+			return (EXIT_FAILURE);
+		tmp_arr[idx] = (int) element;
+		idx++;
 	}
-	while (--arr_len >= 0)
-	{
-		if (!(int_checker(input_splitted[arr_len], &element)));
-		{
-			free(tmp_arr);
-			free_array(input_splitted);
-			exit(EXIT_FAILURE);
-		}
-		tmp_arr[arr_len] = (int) element;
-	}
-	// dup_check();
-	// save tmp_arr to ps->a->elements
+	return (EXIT_SUCCESS);
 }
