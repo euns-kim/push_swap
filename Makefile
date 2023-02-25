@@ -6,7 +6,7 @@
 #    By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 14:17:41 by eunskim           #+#    #+#              #
-#    Updated: 2023/02/22 17:28:21 by eunskim          ###   ########.fr        #
+#    Updated: 2023/02/25 01:00:36 by eunskim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ LIBC		:= $(LIBFT)/libft.a
 GNL			:= $(LIBGNL)/get_next_line.a
 SRCS 		:= $(addprefix $(SRC_DIR)/, \
 				push_swap.c \
-				example.c \
-				something.c)
+				input_parsing_utils.c \
+				split_and_error_check.c)
 OBJS 		:= $(SRCS:.c=.o)
 
 #//= Colors =//#

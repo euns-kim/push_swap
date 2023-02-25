@@ -6,11 +6,12 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:44:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/23 18:58:14 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/02/25 01:15:17 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <limits.h>
 
 typedef struct	s_stack

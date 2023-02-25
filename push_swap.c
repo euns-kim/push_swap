@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/23 19:29:25 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/02/25 01:10:11 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,12 @@
 
 int	main(int argc, char **argv)
 {
-	char	**input;
+	t_ps	ps;
 
 	if (argc < 2)
 		return (0);
 	if (argc == 2)
-	{
-		input = ft_split(argv[1], ' ');
-	}
-
-	input_error_check();
-	init_stack();
-
-	// calloc() t_ps
+		split_and_error_check(&ps, argv[1]);
+	// input_error_check();
+	// init_stack();
 }
