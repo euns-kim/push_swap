@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 17:44:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/25 22:09:21 by eunskim          ###   ########.fr       */
+/*   Created: 2023/02/26 15:40:26 by eunskim           #+#    #+#             */
+/*   Updated: 2023/02/26 15:40:56 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
+#include "push_swap.h"
 
-typedef struct	s_stack
+void	free_p(char	*p)
 {
-	int		*elements;
-	size_t	front;
-	size_t	back;
-	size_t	size;
-	size_t	max_size;
-}	t_st;
+	if (p)
+		free(p);
+}
 
-typedef struct	s_push_swap
+void	free_array(char	**ptr)
 {
-	t_st	a;
-	t_st	b;
-}	t_ps;
+	size_t	i;
+
+	i = 0;
+	while (ptr[i] != NULL)
+	{
+		free(ptr[i] != 0);
+		i++;
+	}
+	free(ptr);
+}

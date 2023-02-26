@@ -6,7 +6,7 @@
 #    By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 14:17:41 by eunskim           #+#    #+#              #
-#    Updated: 2023/02/25 01:00:36 by eunskim          ###   ########.fr        #
+#    Updated: 2023/02/26 18:06:19 by eunskim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,15 @@ CFLAGS 		:= -fsanitize=address -g3 -Wextra -Wall -Werror
 LIBFT		:= lib/libft
 LIBGNL		:= lib/get_next_line
 SRC_DIR 	:= src
-HEADERS		:= -I $(LIBFT) -I $(LIBGNL)
+HEADERS		:= -I $(LIBFT) -I $(LIBGNL) -I $(SRC_DIR)
 LIBC		:= $(LIBFT)/libft.a
 GNL			:= $(LIBGNL)/get_next_line.a
 SRCS 		:= $(addprefix $(SRC_DIR)/, \
 				push_swap.c \
+				parse_and_error_check.c \
 				input_parsing_utils.c \
-				split_and_error_check.c)
+				push_swap_utils.c \
+				test_printing.c)
 OBJS 		:= $(SRCS:.c=.o)
 
 #//= Colors =//#
