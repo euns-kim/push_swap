@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:05:41 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/26 17:48:34 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/02/28 01:16:13 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int	dup_check(int *arr, size_t arr_len)
 		while (i + j < arr_len)
 		{
 			if (arr[i] == arr[i + j])
+			{
+				ft_printf("Duplicated integer detected.\n");
 				return (EXIT_FAILURE);
+			}
 			j++;
 		}
 		i++;
@@ -48,11 +51,15 @@ without having characters other than white spaces */
 int	check_string_end(char **str)
 {
 	pass_white_spaces(str);
-	if (**str != '\0')
+	if (**str == '\0')
 		return (EXIT_SUCCESS);
 	else
+	{
+		ft_printf("Extra character detected.\n");
 		return (EXIT_FAILURE);
+	}
 }
+
 // Modified atoi-like function for push_swap to detect
 // 1) if the input element is a number in the integer range, and
 // 2) if there is any non-digit character inside the string
@@ -83,12 +90,18 @@ int	int_checker(char *str, long long *sum)
 		dgt_cnt++;
 		*sum = *sum * 10 + (*str - '0');
 		if ((*sum * sign > INT_MAX) || (*sum * sign < INT_MIN))
+		{
+			ft_printf("Overflow or underflow happened.\n");
 			return (EXIT_FAILURE);
+		}
 		str++;
 	}
 	*sum = *sum * sign;
 	if (check_string_end(&str) || dgt_cnt == 0)
+	{
+		ft_printf("Int checker failed.\n");
 		return (EXIT_FAILURE);
+	}
 	return (EXIT_SUCCESS);
 }
 

@@ -6,16 +6,16 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/26 18:06:54 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/02/28 01:03:25 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // First part of main is for the parsing of a list of integers,
-// assuming there are two types of valid input.
-// One is "[a list of integers]" in argv[1],
-// the other is a list of integers without double quotes as paraemters given.
+// assuming that there are two types of valid input.
+// One is "[a list of integers delimited by space]" in argv[1],
+// the other is a list of integers as paraemters given.
 // Cases are divided into three according to the value of argc.
 
 // 1) If (argc < 2), the program simply gives the prompt back.
@@ -23,6 +23,9 @@
 // 3) If (argc > 2), argv from index 1 will be the input to be handled.
 
 // For 2) and 3) parsing and error checking will be done at the same time.
+// In either case, one string should contain only one unit of digits.
+// But white spaces before and after the number unit will be tolerated.
+
 // If every element is a valid integer, stacks will be already initiated.
 // If not, allocated memory space will be freed
 // and the program stops, printing "Error\n" in the standard error.
