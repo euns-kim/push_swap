@@ -6,25 +6,9 @@
 #    By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 14:17:41 by eunskim           #+#    #+#              #
-#    Updated: 2023/02/26 18:06:19 by eunskim          ###   ########.fr        #
+#    Updated: 2023/03/03 21:58:18 by eunskim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-NAME 		:= push_swap
-CFLAGS 		:= -fsanitize=address -g3 -Wextra -Wall -Werror
-LIBFT		:= lib/libft
-LIBGNL		:= lib/get_next_line
-SRC_DIR 	:= src
-HEADERS		:= -I $(LIBFT) -I $(LIBGNL) -I $(SRC_DIR)
-LIBC		:= $(LIBFT)/libft.a
-GNL			:= $(LIBGNL)/get_next_line.a
-SRCS 		:= $(addprefix $(SRC_DIR)/, \
-				push_swap.c \
-				parse_and_error_check.c \
-				input_parsing_utils.c \
-				push_swap_utils.c \
-				test_printing.c)
-OBJS 		:= $(SRCS:.c=.o)
 
 #//= Colors =//#
 BOLD	:= \033[1m
@@ -38,8 +22,45 @@ CYAN	:= \033[36;1m
 WHITE	:= \033[37;1m
 RESET	:= \033[0m
 
+#//= Mandatory part =//#
+NAME 				:= push_swap
+CFLAGS 				:= -fsanitize=address -g3 -Wextra -Wall -Werror
+
+LIBFT				:= lib/libft
+LIBGNL				:= lib/get_next_line
+LIBC				:= $(LIBFT)/libft.a
+GNL					:= $(LIBGNL)/get_next_line.a
+
+INC_DIR				:= inc
+HEADERS				:= -I $(LIBFT) -I $(LIBGNL) -I $(INC_DIR)
+
+SRC_DIR_ESSENTIAL	:= src_essential
+SRCS_ESSENTIAL		:= $(addprefix $(SRC_DIR_ESSENTIAL)/, \
+						parse_and_error_check.c \
+						input_parsing_utils.c \
+						push_swap_utils.c \
+						test_printing.c \
+						operations.c \
+						double_operations.c \
+						queue.c \
+						command.c)
+OBJS_ESSENTIAL 		:= $(SRCS_ESSENTIAL:.c=.o)						
+
+SRC_DIR_MANDATORY 	:= src_mandatory
+SRCS_MANDATORY 		:= $(addprefix $(SRC_DIR_MANDATORY)/, \
+						push_swap.c)
+OBJS_MANDATORY 		:= $(SRCS_MANDATORY:.c=.o)
+
+#//= Bonus part =//#
+NAME_BONUS 			:= checker
+
+SRC_DIR_BONUS 		:= src_bonus
+SRCS_BONUS 			:= $(addprefix $(SRC_DIR_BONUS)/, \
+						checker.c)
+OBJS_BONUS 			:= $(SRCS_BONUS:.c=.o)
+
 #//= Make Rules =//#
-all: libft libgnl $(NAME)
+all: libft $(NAME)
 
 libft:
 	@$(MAKE) -C $(LIBFT)
@@ -47,23 +68,34 @@ libft:
 libgnl:
 	@$(MAKE) -C $(LIBGNL)
 
-$(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(HEADERS) $(OBJS) $(LIBC) $(GNL) -o $(NAME) && \
+$(NAME): $(OBJS_ESSENTIAL) $(OBJS_MANDATORY)
+	@$(CC) $(CFLAGS) $(HEADERS) $(OBJS_ESSENTIAL) $(OBJS_MANDATORY) $(LIBC) -o $(NAME) && \
+	echo "$(MAGENTA)$(BOLD)>> Mandatory part - push_swap$(RESET)" && \
+	echo "$(BLUE)$(BOLD)Compilation successful!$(RESET)"
+
+bonus: libft libgnl $(NAME_BONUS)
+
+$(NAME_BONUS): $(OBJS_ESSENTIAL) $(OBJS_BONUS)
+	@$(CC) $(CFLAGS) $(HEADERS) $(OBJS_ESSENTIAL) $(OBJS_BONUS) $(LIBC) $(GNL) -o $(NAME_BONUS) && \
+	echo "$(GREEN)$(BOLD)>> Bonus part - checker$(RESET)" && \
 	echo "$(BLUE)$(BOLD)Compilation successful!$(RESET)"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@ 
 
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJS_ESSENTIAL)
+	@rm -f $(OBJS_MANDATORY)
+	@rm -f $(OBJS_BONUS)
 	@$(MAKE) -C $(LIBFT) clean
 	@$(MAKE) -C $(LIBGNL) clean
 
 fclean: clean
 	@rm -f $(NAME)
-	@$(MAKE) -C $(LIBFT) fclean
-	@$(MAKE) -C $(LIBGNL) fclean
+	@rm -f $(NAME_BONUS)
+	@rm -f $(LIBC)
+	@rm -f $(GNL)
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re, libft, libgnl
+.PHONY: all, bonus, clean, fclean, re, libft, libgnl

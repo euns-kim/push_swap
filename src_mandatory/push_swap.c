@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/28 01:41:07 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/03 15:19:52 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ int	main(int argc, char **argv)
 	t_ps	ps;
 
 	if (argc < 2)
-		return (0);
+		return (EXIT_FAILURE);
 	else if (argc == 2)
 	{
 		if (split_and_error_check(&ps, argv[1]))
 		{
-			write(STDERR_FILENO, "Error\n", 6);
+			write(STDERR_FILENO, "Error\n", 7);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 	{
 		if (argv_error_check(&ps, argc, argv))
 		{
-			write(STDERR_FILENO, "Error\n", 6);
+			write(STDERR_FILENO, "Error\n", 7);
 			exit(EXIT_FAILURE);
 		}
 	}

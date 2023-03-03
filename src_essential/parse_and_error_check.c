@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:46:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/28 01:26:29 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/02/28 17:23:44 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int	initiate_stacks(t_st *a, t_st *b, int *tmp_arr, size_t arr_len)
 	a->size = arr_len;
 	a->max_size = arr_len;
 	b->elements = stack_b;
-	a->front = 0;
-	a->back = 0;
-	a->size = 0;
-	a->max_size = arr_len;
+	b->front = 0;
+	b->back = 0;
+	b->size = 0;
+	b->max_size = arr_len;
 	return (EXIT_SUCCESS);
 }
 

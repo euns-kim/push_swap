@@ -6,46 +6,46 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 22:04:11 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/22 22:34:40 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/02/28 18:42:08 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	reverse_rotate(t_st *stack)
+void	reverse_rotate(t_st *stack)
 {
 	if (stack->size < 2)
-		return (0);
+		return ;
 	push_front(stack, pop_back(stack));
-	return (1);
+	return ;
 }
 
-int	rotate(t_st *stack)
+void	rotate(t_st *stack)
 {
 	if (stack->size < 2)
-		return (0);
+		return ;
 	push_back(stack, pop_front(stack));
-	return (1);
+	return ;
 }
 
-int	swap(t_st *stack)
+void	swap(t_st *stack)
 {
 	int	tmp;
 	int	tmp2;
 
 	if (stack->size < 2)
-		return (0);
+		return ;
 	tmp = pop_front(stack);
 	tmp2 = pop_front(stack);
 	push_front(stack, tmp);
 	push_front(stack, tmp2);
-	return (1);
+	return ;
 }
 
-int	push(t_st *from, t_st *to)
+void	push(t_st *from, t_st *to)
 {
 	if (from->size < 1)
-		return (0);
+		return ;
 	push_front(to, pop_front(from));
-	return (1);
+	return ;
 }
