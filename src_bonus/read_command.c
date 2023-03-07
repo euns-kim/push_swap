@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   read_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 19:16:16 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/07 22:18:14 by eunskim          ###   ########.fr       */
+/*   Created: 2023/03/07 22:17:57 by eunskim           #+#    #+#             */
+/*   Updated: 2023/03/07 22:19:16 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	read_command(t_ps *ps)
 {
-	t_ps	ps;
+	char	*line;
 
-	if (argc < 2)
-		return (EXIT_FAILURE);
-	if (init_program(&ps, argc, argv))
-		return (EXIT_FAILURE);
-	read_command(&ps);
-	if (is_sorted(ps.a, ps.b))
-		write(STDOUT_FILENO, "KO\n", 4);
-	else
-		write(STDOUT_FILENO, "OK\n", 4);
-	free_before_terminating(&ps);
+	line = get_next_line(STDIN_FILENO);
+	while (line)
+	{
+		if (command(ps, line))
+		{
+			free(line);
+			write(STDERR_FILENO, "Error\n", 7);
+			return (EXIT_FAILURE);
+		}
+		free(line);
+		line = get_next_line(STDIN_FILENO);
+	}
 	return (EXIT_SUCCESS);
 }

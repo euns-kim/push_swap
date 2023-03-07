@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 02:20:41 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/03 22:03:15 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/07 22:20:35 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,28 @@ int	ps_strcmp(const char *s1, const char *s2)
 	return (*s1 == '\0' && *s2 == '\0');
 }
 
-int	command(t_ps ps, char *command)
+int	command(t_ps *ps, char *command)
 {
-	if (ps_strcmp(command, "sa\n") )
-		swap(&(ps.a));
+	if (ps_strcmp(command, "sa\n"))
+		swap(&ps->a);
 	else if (ps_strcmp(command, "sb\n"))
-		swap(&(ps.b));
+		swap(&ps->b);
 	else if (ps_strcmp(command, "ss\n"))
 		ss(ps);
 	else if (ps_strcmp(command, "pa\n"))
-		push(&(ps.b), &(ps.a));
+		push(&ps->b, &ps->a);
 	else if (ps_strcmp(command, "pb\n"))
-		push(&(ps.a), &(ps.b));
+		push(&ps->a, &ps->b);
 	else if (ps_strcmp(command, "ra\n"))
-		rotate(&(ps.a));
+		rotate(&ps->a);
 	else if (ps_strcmp(command, "rb\n"))
-		rotate(&(ps.b));
+		rotate(&ps->b);
 	else if (ps_strcmp(command, "rr\n"))
 		rr(ps);
 	else if (ps_strcmp(command, "rra\n"))
-		reverse_rotate(&(ps.a));
+		reverse_rotate(&ps->a);
 	else if (ps_strcmp(command, "rrb\n"))
-		reverse_rotate(&(ps.b));
+		reverse_rotate(&ps->b);
 	else if (ps_strcmp(command, "rrr\n"))
 		rrr(ps);
 	else

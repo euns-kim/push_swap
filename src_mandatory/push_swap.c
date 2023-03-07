@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/03 15:19:52 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/07 22:16:50 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,8 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (EXIT_FAILURE);
-	else if (argc == 2)
-	{
-		if (split_and_error_check(&ps, argv[1]))
-		{
-			write(STDERR_FILENO, "Error\n", 7);
-			exit(EXIT_FAILURE);
-		}
-	}
-	else
-	{
-		if (argv_error_check(&ps, argc, argv))
-		{
-			write(STDERR_FILENO, "Error\n", 7);
-			exit(EXIT_FAILURE);
-		}
-	}
+	if (init_program(&ps, argc, argv))
+		return (EXIT_FAILURE);
 	print_stacks(ps.a, ps.b);
-	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

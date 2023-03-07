@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:44:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/03 21:53:45 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/07 22:18:18 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int		initiate_stacks(t_st *a, t_st *b, int *tmp_arr, size_t arr_len);
 void	print_stacks(t_st a, t_st b);
 void	free_array(char	**ptr);
 void	free_p(char *p);
+void	free_before_terminating(t_ps *ps);
 
 int		pop_back(t_st *st);
 int		pop_front(t_st *st);
@@ -60,11 +61,18 @@ void	swap(t_st *stack);
 void	rotate(t_st *stack);
 void	reverse_rotate(t_st *stack);
 
-void	ss(t_ps ps);
-void	rr(t_ps ps);
-void	rrr(t_ps ps);
+void	ss(t_ps *ps);
+void	rr(t_ps *ps);
+void	rrr(t_ps *ps);
 
 int		ps_strcmp(const char *s1, const char *s2);
-int		command(t_ps ps, char *command);
+int		command(t_ps *ps, char *command);
+
+size_t	prev_idx(size_t curr_idx, size_t max_size);
+size_t	next_idx(size_t curr_idx, size_t max_size);
+
+int		read_command(t_ps *ps);
+int		is_sorted(t_st a, t_st b);
+int		init_program(t_ps *ps, int argc, char **argv);
 
 #endif

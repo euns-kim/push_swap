@@ -6,7 +6,7 @@
 #    By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 14:17:41 by eunskim           #+#    #+#              #
-#    Updated: 2023/03/03 21:58:18 by eunskim          ###   ########.fr        #
+#    Updated: 2023/03/07 22:18:47 by eunskim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,9 @@ NAME_BONUS 			:= checker
 
 SRC_DIR_BONUS 		:= src_bonus
 SRCS_BONUS 			:= $(addprefix $(SRC_DIR_BONUS)/, \
-						checker.c)
+						checker.c \
+						read_command.c \
+						is_sorted.c)
 OBJS_BONUS 			:= $(SRCS_BONUS:.c=.o)
 
 #//= Make Rules =//#

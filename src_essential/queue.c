@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:02:07 by eunskim           #+#    #+#             */
-/*   Updated: 2023/02/22 21:59:57 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/07 19:30:19 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	pop_back(t_st *st)
 
 	tmp = st->elements[st->back];
 	if (st->size != 1)
-		st->back = (st->back + st->max_size - 1) % st->max_size;
-	st->size -= 1;
+		st->back = prev_idx(st->back, st->max_size);
+	st->size = st->size - 1;
 	return (tmp);
 }
 
@@ -29,23 +29,23 @@ int	pop_front(t_st *st)
 
 	tmp = st->elements[st->front];
 	if (st->size != 1)
-		st->front = (st->front + 1) % st->max_size;
-	st->size -= 1;
+		st->front = next_idx(st->front, st->max_size);
+	st->size = st->size - 1;
 	return (tmp);
 }
 
 void	push_back(t_st *st, int new)
 {
 	if (st->size != 0)
-		st->back = (st->back + 1) % st->max_size;
+		st->back = next_idx(st->back, st->max_size);
 	st->elements[st->back] = new;
-	st->size += 1;
+	st->size = st->size + 1;
 }
 
 void	push_front(t_st *st, int new)
 {
 	if (st->size != 0)
-		st->front = (st->front + st->max_size - 1) % st->max_size;
+		st->front = prev_idx(st->front, st->max_size);
 	st->elements[st->front] = new;
-	st->size += 1;
+	st->size = st->size + 1;
 }

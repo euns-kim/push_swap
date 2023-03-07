@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 19:16:16 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/07 22:18:14 by eunskim          ###   ########.fr       */
+/*   Created: 2023/03/07 19:04:07 by eunskim           #+#    #+#             */
+/*   Updated: 2023/03/07 21:44:24 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	is_sorted(t_st a, t_st b)
 {
-	t_ps	ps;
+	size_t	i;
+	size_t	idx;
+	size_t	idx_next;
 
-	if (argc < 2)
+	i = 0;
+	idx = a.front;
+	if (b.front != b.back || b.size != 0 || a.size != a.max_size)
 		return (EXIT_FAILURE);
-	if (init_program(&ps, argc, argv))
-		return (EXIT_FAILURE);
-	read_command(&ps);
-	if (is_sorted(ps.a, ps.b))
-		write(STDOUT_FILENO, "KO\n", 4);
-	else
-		write(STDOUT_FILENO, "OK\n", 4);
-	free_before_terminating(&ps);
+	while (i < a.size - 1)
+	{
+		idx_next = next_idx(idx, a.max_size);
+		if (a.elements[idx] > a.elements[idx_next])
+			return (EXIT_FAILURE);
+		idx = idx_next;
+		i++;
+	}
 	return (EXIT_SUCCESS);
 }
