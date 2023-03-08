@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:44:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/07 22:18:18 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/08 01:01:14 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_push_swap
 {
 	t_st	a;
 	t_st	b;
+	//int		*pivots[2];
 }	t_ps;
 
 int		main(int argc, char **argv);
@@ -74,5 +75,12 @@ size_t	next_idx(size_t curr_idx, size_t max_size);
 int		read_command(t_ps *ps);
 int		is_sorted(t_st a, t_st b);
 int		init_program(t_ps *ps, int argc, char **argv);
+
+int		get_pivots(t_ps *ps);
+int		copy_stack_a(t_ps *ps, int **tmp_arr_to_sort);
+void	heap_sort(t_ps *ps, int *tmp_arr_to_sort);
+void	swap_in_array(int* a, int* b);
+void	heapify(int *arr, size_t n, size_t i);
+void	print_array(int *arr, size_t n);
 
 #endif
