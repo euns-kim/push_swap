@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:44:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/08 01:01:14 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/08 18:20:41 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		parse_only_int(size_t arr_len, char	**input_arr, int *tmp_arr);
 size_t	get_arr_len(char **arr);
 int		int_checker(char *str, long long *sum);
 int		check_string_end(char **str);
-void	pass_white_spaces(char **str);
+void	pass_spaces(char **str);
 int		dup_check(int *arr, size_t arr_len);
 int		initiate_stacks(t_st *a, t_st *b, int *tmp_arr, size_t arr_len);
 void	print_stacks(t_st a, t_st b);
@@ -77,10 +77,10 @@ int		is_sorted(t_st a, t_st b);
 int		init_program(t_ps *ps, int argc, char **argv);
 
 int		get_pivots(t_ps *ps);
-int		copy_stack_a(t_ps *ps, int **tmp_arr_to_sort);
+int		copy_stack_a(t_ps *ps, int *tmp_arr_to_sort);
+void	calculate_pivots(t_ps *ps, int *tmp_arr_to_sort);
 void	heap_sort(t_ps *ps, int *tmp_arr_to_sort);
-void	swap_in_array(int* a, int* b);
 void	heapify(int *arr, size_t n, size_t i);
-void	print_array(int *arr, size_t n);
+void	swap_in_array(int* a, int* b);
 
 #endif

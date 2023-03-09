@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/08 00:27:03 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/08 17:11:47 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 // For 2) and 3) parsing and error checking will be done at the same time.
 // In either case, one string should contain only one unit of digits.
-// But white spaces before and after the number unit will be tolerated.
+// But spaces before and after the number unit will be tolerated.
 
 // If every element is a valid integer, stacks will be already initiated.
 // If not, allocated memory space will be freed

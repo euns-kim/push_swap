@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:05:41 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/07 22:22:22 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/08 17:13:36 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,19 @@ int	dup_check(int *arr, size_t arr_len)
 	return (EXIT_SUCCESS);
 }
 
-/* a function to pass white spaces in the string
+/* a function to pass spaces in the string
 before and after a digit-unit to be detected */
-void	pass_white_spaces(char **str)
+void	pass_spaces(char **str)
 {
-	while (**str == ' ' || **str == '\f' || **str == '\n'
-		|| **str == '\r' || **str == '\t' || **str == '\v')
+	while (**str == ' ')
 		(*str)++;
 }
 
 /* a function to check if the given string ends
-without having characters other than white spaces */
+without having characters other than spaces */
 int	check_string_end(char **str)
 {
-	pass_white_spaces(str);
+	pass_spaces(str);
 	if (**str == '\0')
 		return (EXIT_SUCCESS);
 	else
@@ -57,7 +56,7 @@ int	check_string_end(char **str)
 // Modified atoi-like function for push_swap to detect
 // 1) if the input element is a number in the integer range, and
 // 2) if there is any non-digit character inside the string
-// 	other than signs (+, -) at the first place and white-spaces.
+// 	other than signs (+, -) at the first place and spaces.
 // When an integer is parsed and there is another digit following after,
 // 	it will be regarded as an invalid input.
 // In case of overflow/underflow, or extra character detection,
@@ -72,7 +71,7 @@ int	int_checker(char *str, long long *sum)
 	*sum = 0;
 	dgt_cnt = 0;
 	sign = 1;
-	pass_white_spaces(&str);
+	pass_spaces(&str);
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
