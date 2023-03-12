@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:44:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/12 18:50:39 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/12 20:08:41 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 typedef struct s_stack
 {
-	int		*elements;
+	size_t	*elements;
 	size_t	front;
 	size_t	back;
 	size_t	size;
@@ -33,7 +33,8 @@ typedef struct s_push_swap
 {
 	t_st	a;
 	t_st	b;
-	//int		*pivots[2];
+
+	size_t	*pivots[2];
 }	t_ps;
 
 int		main(int argc, char **argv);
@@ -77,13 +78,13 @@ int		is_sorted(t_st a, t_st b);
 int		init_program(t_ps *ps, int argc, char **argv);
 
 int		get_pivots(t_ps *ps);
-int		copy_stack_a(t_ps *ps, int *tmp_arr_to_sort);
-void	calculate_pivots(t_ps *ps, int *tmp_arr_to_sort);
-void	heap_sort(t_ps *ps, int *tmp_arr_to_sort);
-void	heapify(int *arr, size_t n, size_t i);
-void	swap_in_array(int* a, int* b);
+int		copy_stack_a(t_ps *ps, size_t *tmp_arr_to_sort);
+void	calculate_pivots(t_ps *ps, size_t *tmp_arr_to_sort);
+void	heap_sort(t_ps *ps, size_t *tmp_arr_to_sort);
+void	heapify(size_t *arr, size_t n, size_t i);
+void	swap_in_array(size_t *a, size_t *b);
 
-int		get_sorted_order(t_ps *ps);
-size_t	get_index(t_ps *ps, size_t i, size_t arr_size);
+size_t	*get_sorted_order(size_t arr_size, int *tmp_arr);
+size_t	get_index(int *tmp_arr, size_t i, size_t arr_size);
 
 #endif

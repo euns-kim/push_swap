@@ -6,22 +6,22 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 17:30:55 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/08 18:18:49 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/12 20:04:20 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_in_array(int *a, int *b)
+void	swap_in_array(size_t *a, size_t *b)
 {
-	int	tmp;
+	size_t	tmp;
 
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
 }
 
-void	heapify(int *arr, size_t n, size_t i)
+void	heapify(size_t *arr, size_t n, size_t i)
 {
 	size_t	largest;
 	size_t	left;
@@ -49,7 +49,7 @@ void	heapify(int *arr, size_t n, size_t i)
 /* first while loop to build a max-heap */
 /* second while loop to sort the largest number and heapify again */
 
-void	heap_sort(t_ps *ps, int *tmp_arr_to_sort)
+void	heap_sort(t_ps *ps, size_t *tmp_arr_to_sort)
 {
 	size_t	i;
 	size_t	n;

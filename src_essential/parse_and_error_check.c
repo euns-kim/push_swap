@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:46:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/07 22:22:47 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/12 20:08:50 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 int	initiate_stacks(t_st *a, t_st *b, int *tmp_arr, size_t arr_len)
 {
-	int	*stack_b;
+	size_t	*stack_b;
 
-	stack_b = ft_calloc(arr_len, sizeof(int));
-	if (stack_b == NULL)
-		return (EXIT_FAILURE);
-	a->elements = tmp_arr;
 	a->front = 0;
 	a->back = arr_len - 1;
 	a->size = arr_len;
 	a->max_size = arr_len;
+	a->elements = get_sorted_order(arr_len, tmp_arr);
+	if (a->elements == NULL)
+		return (EXIT_FAILURE);
+	stack_b = ft_calloc(arr_len, sizeof(size_t));
+	if (stack_b == NULL)
+		return (EXIT_FAILURE);
 	b->elements = stack_b;
 	b->front = 0;
 	b->back = 0;

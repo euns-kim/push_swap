@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 21:05:17 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/12 19:33:05 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/12 20:07:31 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // go through the array to count how many smaller integers are there
 // than the current one and give the counter as an index
 
-size_t	get_index(t_ps *ps, size_t i, size_t arr_size)
+size_t	get_index(int *tmp_arr, size_t i, size_t arr_size)
 {
 	size_t	cnt;
 	size_t	idx_next;
@@ -30,7 +30,7 @@ size_t	get_index(t_ps *ps, size_t i, size_t arr_size)
 	idx_next = next_idx(i, arr_size);
 	while (cnt < arr_size - 1)
 	{
-		if (ps->a.elements[i] > ps->a.elements[idx_next])
+		if (tmp_arr[i] > tmp_arr[idx_next])
 		{
 			sorted_index = sorted_index + 1;
 		}
@@ -40,25 +40,20 @@ size_t	get_index(t_ps *ps, size_t i, size_t arr_size)
 	return (sorted_index);
 }
 
-int	get_sorted_order(t_ps *ps)
+size_t	*get_sorted_order(size_t arr_size, int *tmp_arr)
 {
 	size_t	element_idx;
-	size_t	arr_size;
-	int		*sorted_indices;
-	int		*tmp_pointer;
+	size_t	*sorted_indices;
 
 	element_idx = 0;
-	arr_size = ps->a.max_size;
-	sorted_indices = ft_calloc(arr_size, sizeof(int));
+	sorted_indices = ft_calloc(arr_size, sizeof(size_t));
 	if (sorted_indices == NULL)
-		return (EXIT_FAILURE);
+		return (NULL);
 	while (element_idx < arr_size)
 	{
-		sorted_indices[element_idx] = get_index(ps, element_idx, arr_size);
+		sorted_indices[element_idx] = get_index(tmp_arr, element_idx, arr_size);
 		element_idx++;
 	}
-	tmp_pointer = ps->a.elements;
-	free(tmp_pointer);
-	ps->a.elements = sorted_indices;
-	return (EXIT_SUCCESS);
+	free(tmp_arr);
+	return (sorted_indices);
 }
