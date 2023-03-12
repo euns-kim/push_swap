@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:46:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/12 20:08:50 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/12 22:04:04 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	initiate_stacks(t_st *a, t_st *b, int *tmp_arr, size_t arr_len)
 		return (EXIT_FAILURE);
 	stack_b = ft_calloc(arr_len, sizeof(size_t));
 	if (stack_b == NULL)
+	{
+		free(a->elements);
 		return (EXIT_FAILURE);
+	}
 	b->elements = stack_b;
 	b->front = 0;
 	b->back = 0;
@@ -61,7 +64,7 @@ int	argv_error_check(t_ps *ps, int argc, char **argv)
 		|| dup_check(tmp_arr, argc - 1)
 		|| initiate_stacks(&(ps->a), &(ps->b), tmp_arr, argc - 1))
 	{
-		free(tmp_arr);
+		free_p((char *) tmp_arr);
 		return (EXIT_FAILURE);
 	}
 	return (EXIT_SUCCESS);

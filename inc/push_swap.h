@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:44:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/12 20:08:41 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/12 23:00:03 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+
+typedef struct s_reference_points
+{
+	size_t	max;
+	size_t	mid;
+	size_t	min;
+	size_t	pivot[2];
+}	t_rp;
 
 typedef struct s_stack
 {
@@ -33,8 +41,7 @@ typedef struct s_push_swap
 {
 	t_st	a;
 	t_st	b;
-
-	size_t	*pivots[2];
+	t_rp	marked;
 }	t_ps;
 
 int		main(int argc, char **argv);
@@ -79,12 +86,18 @@ int		init_program(t_ps *ps, int argc, char **argv);
 
 int		get_pivots(t_ps *ps);
 int		copy_stack_a(t_ps *ps, size_t *tmp_arr_to_sort);
-void	calculate_pivots(t_ps *ps, size_t *tmp_arr_to_sort);
+void	calculate_pivots(t_ps *ps, t_rp *marked);
 void	heap_sort(t_ps *ps, size_t *tmp_arr_to_sort);
 void	heapify(size_t *arr, size_t n, size_t i);
 void	swap_in_array(size_t *a, size_t *b);
 
 size_t	*get_sorted_order(size_t arr_size, int *tmp_arr);
 size_t	get_index(int *tmp_arr, size_t i, size_t arr_size);
+
+void	mini_sorting(t_ps *ps);
+void	sort_2_elements(t_st *a);
+void	sort_3_elements(t_st *a);
+
+// void	partitioning(t_ps *ps, t_rp *marked);
 
 #endif
