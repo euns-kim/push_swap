@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/08 17:11:47 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/12 18:48:46 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (init_program(&ps, argc, argv))
 		return (EXIT_FAILURE);
+	get_sorted_order(&ps);
 	if (get_pivots(&ps))
 	{
 		free_before_terminating(&ps);

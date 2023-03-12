@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 22:54:59 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/09 21:12:03 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/12 19:28:35 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 // 2. sort the copied
 // 3. get the right pivots
 
-void	calculate_pivots(t_ps *ps, int *tmp_arr_to_sort)
-{
+// void	calculate_pivots(t_ps *ps, int *tmp_arr_to_sort)
+// {
 	
-}
+// }
 
 int	copy_stack_a(t_ps *ps, int *tmp_arr_to_sort)
 {
@@ -47,6 +47,6 @@ int	get_pivots(t_ps *ps)
 		return (EXIT_FAILURE);
 	copy_stack_a(ps, tmp_arr_to_sort);
 	heap_sort(ps, tmp_arr_to_sort);
-	calculate_pivots(ps, tmp_arr_to_sort);
+	// calculate_pivots(ps, tmp_arr_to_sort);
 	return (EXIT_SUCCESS);
 }
