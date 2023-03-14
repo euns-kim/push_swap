@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 22:20:31 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/14 22:46:46 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/14 23:05:07 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,41 +33,23 @@ void	sort_5_elements(t_st *a, t_st *b)
 		swap(b);
 		ft_printf("sb\n");
 	}
-	// push(b, a);
-	// push(b, a);
+	push(b, a);
+	push(b, a);
 	ft_printf("pa\npa\n");
 }
 
 void	sort_4_elements(t_st *a, t_st *b)
 {
+	while (a->elements[a->front] != 0)
+	{
+		rotate(a);
+		ft_printf("ra\n");
+	}
 	push(a, b);
 	ft_printf("pb\n");
 	sort_3_elements(a);
-	if (b->elements[b->front] == 0)
-	{
-		// push(b, a);
-		ft_printf("pa\n");
-	}
-	else if (b->elements[b->front] == 1)
-	{
-		// push(b, a);
-		// swap(a);
-		ft_printf("pa\nsa\n");
-	}
-	else if (b->elements[b->front] == 2)
-	{
-		// reverse_rotate(a);
-		// push(b, a);
-		// rotate(a);
-		// rotate(a);
-		ft_printf("rra\npa\nra\nra\n");
-	}
-	else if (b->elements[b->front] == 3)
-	{
-		// push(b, a);
-		// rotate(a);
-		ft_printf("pa\nra\n");
-	}
+	push(b, a);
+	ft_printf("pa\n");
 }
 
 void	sort_3_elements(t_st *a)
