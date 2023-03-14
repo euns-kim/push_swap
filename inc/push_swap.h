@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:44:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/12 23:00:03 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/14 22:41:48 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,9 @@ size_t	*get_sorted_order(size_t arr_size, int *tmp_arr);
 size_t	get_index(int *tmp_arr, size_t i, size_t arr_size);
 
 void	mini_sorting(t_ps *ps);
-void	sort_2_elements(t_st *a);
 void	sort_3_elements(t_st *a);
+void	sort_4_elements(t_st *a, t_st *b);
+void	sort_5_elements(t_st *a, t_st *b);
 
 // void	partitioning(t_ps *ps, t_rp *marked);
 
