@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:44:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/14 22:41:48 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/16 21:05:47 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,33 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+
+typedef enum e_command
+{
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+}	t_cmd;
+
+typedef struct	s_command_node
+{
+	t_cmd					cmd;	// enum for each cmd
+	struct s_command_node	*next;	// next node
+}	t_cn;
+
+typedef struct	s_command_list
+{
+	struct s_command_node	*start; // first node of command list
+	struct s_command_node	*start_opitmized; // first node of optimized command list
+}	t_cl;
 
 typedef struct s_reference_points
 {
@@ -70,9 +97,9 @@ void	swap(t_st *stack);
 void	rotate(t_st *stack);
 void	reverse_rotate(t_st *stack);
 
-void	ss(t_ps *ps);
-void	rr(t_ps *ps);
-void	rrr(t_ps *ps);
+void	swap_a_and_b(t_ps *ps);
+void	rotate_a_and_b(t_ps *ps);
+void	reverse_rotate_a_and_b(t_ps *ps);
 
 int		ps_strcmp(const char *s1, const char *s2);
 int		command(t_ps *ps, char *command);
@@ -84,13 +111,6 @@ int		read_command(t_ps *ps);
 int		is_sorted(t_st a, t_st b);
 int		init_program(t_ps *ps, int argc, char **argv);
 
-int		get_pivots(t_ps *ps);
-int		copy_stack_a(t_ps *ps, size_t *tmp_arr_to_sort);
-void	calculate_pivots(t_ps *ps, t_rp *marked);
-void	heap_sort(t_ps *ps, size_t *tmp_arr_to_sort);
-void	heapify(size_t *arr, size_t n, size_t i);
-void	swap_in_array(size_t *a, size_t *b);
-
 size_t	*get_sorted_order(size_t arr_size, int *tmp_arr);
 size_t	get_index(int *tmp_arr, size_t i, size_t arr_size);
 
@@ -99,6 +119,7 @@ void	sort_3_elements(t_st *a);
 void	sort_4_elements(t_st *a, t_st *b);
 void	sort_5_elements(t_st *a, t_st *b);
 
-// void	partitioning(t_ps *ps, t_rp *marked);
+void	calculate_pivots(t_ps *ps, t_rp *marked);
+void	partitioning(t_ps *ps, t_rp *marked);
 
 #endif
