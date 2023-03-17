@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 22:20:31 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/14 23:05:07 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/17 18:59:08 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	sort_3_elements(t_st *a)
 
 void	mini_sorting(t_ps *ps)
 {
-	if (ps->a.max_size == 2)
+	if (ps->a.size == 2)
 	{
 		if (ps->a.elements[0] > ps->a.elements[1])
 		{
@@ -96,11 +96,11 @@ void	mini_sorting(t_ps *ps)
 			ft_printf("sa\n");
 		}
 	}
-	else if (ps->a.max_size == 3)
+	else if (ps->a.size == 3)
 		sort_3_elements(&(ps->a));
-	else if (ps->a.max_size == 4)
+	else if (ps->a.size == 4)
 		sort_4_elements(&(ps->a), &(ps->b));
-	else if (ps->a.max_size == 5)
+	else if (ps->a.size == 5)
 		sort_5_elements(&(ps->a), &(ps->b));
 	return ;
 }

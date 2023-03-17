@@ -6,7 +6,7 @@
 #    By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 14:17:41 by eunskim           #+#    #+#              #
-#    Updated: 2023/03/16 17:59:09 by eunskim          ###   ########.fr        #
+#    Updated: 2023/03/17 18:17:45 by eunskim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,11 +40,11 @@ SRCS_ESSENTIAL		:= $(addprefix $(SRC_DIR_ESSENTIAL)/, \
 						input_parsing_utils.c \
 						push_swap_utils.c \
 						indexing.c \
-						test_printing.c \
 						operations.c \
 						double_operations.c \
 						queue.c \
-						command.c)
+						command.c \
+						test_printing.c)
 OBJS_ESSENTIAL 		:= $(SRCS_ESSENTIAL:.c=.o)						
 
 SRC_DIR_MANDATORY 	:= src_mandatory
