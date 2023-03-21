@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 21:42:27 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/17 20:40:26 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/21 21:18:27 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // pivot[0] < n <= pivot[1] : pb
 // n <= pivot[0] : pb && rb
 
-void	partitioning(t_ps *ps, t_rp *marked)
+void	partitioning(t_ps *ps)
 {
 	size_t	idx;
 	size_t	cnt;
@@ -27,21 +27,14 @@ void	partitioning(t_ps *ps, t_rp *marked)
 	while (cnt < ps->a.max_size)
 	{
 		n = ps->a.elements[idx];
-		if (n > marked->pivot[1])
+		if (n > ps->pivot[1])
+			run_command(ps, RA);
+		else if (n > ps->pivot[0] && n <= ps->pivot[1])
+			run_command(ps, PB);
+		else if (n <= ps->pivot[0])
 		{
-			rotate(&(ps->a));
-			ft_printf("ra\n");
-		}
-		else if (n > marked->pivot[0] && n <= marked->pivot[1])
-		{
-			push(&(ps->a), &(ps->b));
-			ft_printf("pb\n");
-		}
-		else if (n <= marked->pivot[0])
-		{
-			push(&(ps->a), &(ps->b));
-			rotate(&(ps->b));
-			ft_printf("pb\nrb\n");
+			run_command(ps, PB);
+			run_command(ps, RB);
 		}
 		cnt++;
 		idx = ps->a.front;
@@ -50,21 +43,15 @@ void	partitioning(t_ps *ps, t_rp *marked)
 		mini_sorting(ps);
 	else
 	{
-		cnt = ps->a.size + 1;
+		cnt = ps->a.size - 3 + 1;
 		while (--cnt)
-		{
-			push(&(ps->a), &(ps->b));
-			ft_printf("pb\n");
-		}
+			run_command(ps, PB);
+		mini_sorting(ps);
 	}
-	print_stacks(ps->a, ps->b);
 }
 
-void	calculate_pivots(t_ps *ps, t_rp *marked)
+void	calculate_pivots(t_ps *ps)
 {
-	marked->max = ps->a.max_size - 1;
-	marked->mid = ps->a.max_size / 2;
-	marked->min = 0;
-	marked->pivot[0] = marked->max * 1 / 3;
-	marked->pivot[1] = marked->max * 2 / 3;
+	ps->pivot[0] = (ps->a.max_size - 1) * 1 / 3;
+	ps->pivot[1] = (ps->a.max_size - 1) * 2 / 3;
 }

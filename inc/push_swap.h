@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:44:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/17 18:09:21 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/21 21:17:57 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,16 @@ typedef enum e_command
 	RRR
 }	t_cmd;
 
-typedef struct	s_command_node
+typedef struct s_cost_calculation
 {
-	t_cmd					cmd;	// enum for each cmd
-	struct s_command_node	*next;	// next node
-}	t_cn;
-
-typedef struct	s_command_list
-{
-	struct s_command_node	*start; // first node of command list
-	struct s_command_node	*start_opitmized; // first node of optimized command list
-}	t_cl;
-
-typedef struct s_reference_points
-{
-	size_t	max;
-	size_t	mid;
-	size_t	min;
-	size_t	pivot[2];
-}	t_rp;
+	size_t	ra;
+	size_t	rb;
+	size_t	rr;
+	size_t	rra;
+	size_t	rrb;
+	size_t	rrr;
+	size_t step_cnt;
+}	t_cc;
 
 typedef struct s_stack
 {
@@ -68,7 +59,7 @@ typedef struct s_push_swap
 {
 	t_st	a;
 	t_st	b;
-	t_rp	marked;
+	size_t	pivot[2];
 }	t_ps;
 
 int		main(int argc, char **argv);
@@ -115,11 +106,27 @@ size_t	*get_sorted_order(size_t arr_size, int *tmp_arr);
 size_t	get_index(int *tmp_arr, size_t i, size_t arr_size);
 
 void	mini_sorting(t_ps *ps);
-void	sort_3_elements(t_st *a);
-void	sort_4_elements(t_st *a, t_st *b);
-void	sort_5_elements(t_st *a, t_st *b);
+void	sort_3_elements(t_ps *ps, t_st *a);
+void	sort_4_elements(t_ps *ps, t_st *a);
+void	sort_5_elements(t_ps *ps, t_st *a, t_st *b);
 
-void	calculate_pivots(t_ps *ps, t_rp *marked);
-void	partitioning(t_ps *ps, t_rp *marked);
+void	calculate_pivots(t_ps *ps);
+void	partitioning(t_ps *ps);
+
+void	run_command(t_ps *ps, t_cmd val);
+void	print_command(t_cmd val);
+void	run_opt_commands(t_ps *ps, t_cc opt);
+
+t_cc	find_the_optimal(t_st a, t_st b);
+void	count_rb_rrb(t_st b, size_t b_idx, t_cc *curr);
+size_t	get_index_from_0(t_st stack, size_t idx);
+void	count_ra_rra(t_cc *curr, t_st a, size_t element_to_push);
+size_t	search_from_front(t_st a, size_t element_to_push);
+size_t	search_from_back(t_st a, size_t element_to_push);
+void	count_steps(t_cc *curr);
+int		stack_a_is_sorted(t_st a);
+void	opt_rr_rrr(t_cc *curr);
+
+int		sort_greedy(t_ps *ps);
 
 #endif

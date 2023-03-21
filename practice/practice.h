@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   practice.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 19:16:16 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/21 17:30:03 by eunskim          ###   ########.fr       */
+/*   Created: 2023/03/19 16:44:36 by eunskim           #+#    #+#             */
+/*   Updated: 2023/03/19 16:44:43 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int	main(int argc, char **argv)
+typedef enum e_command
 {
-	t_ps	ps;
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
+	RA,
+	RB,
+	RR,
+	RRA,
+	RRB,
+	RRR
+}	t_cmd;
 
-	if (argc < 2)
-		return (EXIT_FAILURE);
-	if (init_program(&ps, argc, argv))
-		return (EXIT_FAILURE);
-	read_command(&ps);
-	if (is_sorted(ps.a, ps.b))
-		write(STDOUT_FILENO, "KO\n", 4);
-	else
-		write(STDOUT_FILENO, "OK\n", 4);
-	free_before_terminating(&ps);
-	return (EXIT_SUCCESS);
-}
+typedef struct	s_command_node
+{
+	t_cmd					cmd;	// enum for each cmd
+	struct s_command_node	*next;	// next node
+}	t_cn;
+
+typedef struct	s_command_list
+{
+	struct s_command_node	*start; // first node of command list
+	struct s_command_node	*start_opitmized; // first node of optimized command list
+}	t_cl;

@@ -6,7 +6,7 @@
 #    By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 14:17:41 by eunskim           #+#    #+#              #
-#    Updated: 2023/03/17 18:17:45 by eunskim          ###   ########.fr        #
+#    Updated: 2023/03/21 21:01:40 by eunskim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,15 +43,18 @@ SRCS_ESSENTIAL		:= $(addprefix $(SRC_DIR_ESSENTIAL)/, \
 						operations.c \
 						double_operations.c \
 						queue.c \
-						command.c \
-						test_printing.c)
+						test_printing.c \
+						is_sorted.c)
 OBJS_ESSENTIAL 		:= $(SRCS_ESSENTIAL:.c=.o)						
 
 SRC_DIR_MANDATORY 	:= src_mandatory
 SRCS_MANDATORY 		:= $(addprefix $(SRC_DIR_MANDATORY)/, \
 						push_swap.c \
 						mini_sorting.c \
-						partitioning.c)
+						partitioning.c \
+						calculate_cost.c \
+						run_print_command.c \
+						sort.c)
 OBJS_MANDATORY 		:= $(SRCS_MANDATORY:.c=.o)
 
 #//= Bonus part =//#
@@ -61,7 +64,7 @@ SRC_DIR_BONUS 		:= src_bonus
 SRCS_BONUS 			:= $(addprefix $(SRC_DIR_BONUS)/, \
 						checker.c \
 						read_command.c \
-						is_sorted.c)
+						command.c)
 OBJS_BONUS 			:= $(SRCS_BONUS:.c=.o)
 
 #//= Make Rules =//#

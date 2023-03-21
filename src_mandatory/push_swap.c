@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/17 18:05:59 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/21 21:18:55 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,10 @@ int	main(int argc, char **argv)
 	if (init_program(&ps, argc, argv))
 		return (EXIT_FAILURE);
 	if (ps.a.max_size < 6)
-	{
 		mini_sorting(&ps);
-		return (EXIT_SUCCESS);
-	}
 	else
-	{
-		calculate_pivots(&ps, &(ps.marked));
-		partitioning(&ps, &(ps.marked));
-	}
+		sort_greedy(&ps);
+	print_stacks(ps.a, ps.b);
 	free_before_terminating(&ps);
 	return (EXIT_SUCCESS);
 }
