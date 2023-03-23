@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 02:20:41 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/19 17:11:40 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/22 16:53:45 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ps_strcmp(const char *s1, const char *s2)
 	}
 	return (*s1 == '\0' && *s2 == '\0');
 }
+
+/* a function to execute commands using strcmp */
 
 int	command(t_ps *ps, char *command)
 {

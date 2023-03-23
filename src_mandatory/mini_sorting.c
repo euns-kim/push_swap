@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 22:20:31 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/21 21:10:06 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/23 19:15:33 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sort_5_elements(t_ps *ps, t_st *a, t_st *b)
 		run_command(ps, PB);
 	}
 	sort_3_elements(ps, a);
-	if (b->elements[0] < b->elements[1])
+	if (b->elements[b->front] < b->elements[next_idx(b->front, b->max_size)])
 		run_command(ps, SB);
 	run_command(ps, PA);
 	run_command(ps, PA);
@@ -44,14 +44,17 @@ void	sort_3_elements(t_ps *ps, t_st *a)
 	size_t	mid_idx;
 
 	mid_idx = next_idx(a->front, a->max_size);
-	if ((a->elements[a->front] < a->elements[a->back]) && (a->elements[mid_idx] > a->elements[a->back]))
+	if ((a->elements[a->front] < a->elements[a->back]) \
+	&& (a->elements[mid_idx] > a->elements[a->back]))
 	{
 		run_command(ps, RRA);
 		run_command(ps, SA);
 	}
-	else if ((a->elements[a->front] < a->elements[a->back]) && (a->elements[a->front] > a->elements[mid_idx]))
+	else if ((a->elements[a->front] < a->elements[a->back]) \
+	&& (a->elements[a->front] > a->elements[mid_idx]))
 		run_command(ps, SA);
-	else if ((a->elements[a->front] > a->elements[a->back]) && (a->elements[a->front] < a->elements[mid_idx]))
+	else if ((a->elements[a->front] > a->elements[a->back]) \
+	&& (a->elements[a->front] < a->elements[mid_idx]))
 		run_command(ps, RRA);
 	else if ((a->elements[a->front] > a->elements[mid_idx]))
 	{

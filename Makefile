@@ -6,7 +6,7 @@
 #    By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 14:17:41 by eunskim           #+#    #+#              #
-#    Updated: 2023/03/21 21:01:40 by eunskim          ###   ########.fr        #
+#    Updated: 2023/03/23 19:00:40 by eunskim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,10 +51,10 @@ SRC_DIR_MANDATORY 	:= src_mandatory
 SRCS_MANDATORY 		:= $(addprefix $(SRC_DIR_MANDATORY)/, \
 						push_swap.c \
 						mini_sorting.c \
+						sort.c\
 						partitioning.c \
 						calculate_cost.c \
-						run_print_command.c \
-						sort.c)
+						run_print_command.c)
 OBJS_MANDATORY 		:= $(SRCS_MANDATORY:.c=.o)
 
 #//= Bonus part =//#

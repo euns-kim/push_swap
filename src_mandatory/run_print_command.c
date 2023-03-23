@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:00:39 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/21 21:16:42 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/23 19:06:50 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,19 @@ void	print_command(t_cmd val)
 		ft_printf("rrr\n");
 }
 
-void	run_opt_commands(t_ps *ps, t_cc opt)
+void	run_opt_commands(t_ps *ps, t_cc *opt)
 {
-	while (opt.ra--)
+	while (opt->ra--)
 		run_command(ps, RA);
-	while (opt.rb--)
+	while (opt->rb--)
 		run_command(ps, RB);
-	while (opt.rr--)
+	while (opt->rr--)
 		run_command(ps, RR);
-	while (opt.rra--)
+	while (opt->rra--)
 		run_command(ps, RRA);
-	while (opt.rrb--)
+	while (opt->rrb--)
 		run_command(ps, RRB);
-	while (opt.rrr--)
+	while (opt->rrr--)
 		run_command(ps, RRR);
+	run_command(ps, PA);
 }

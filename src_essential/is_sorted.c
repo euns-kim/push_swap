@@ -6,11 +6,13 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:04:07 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/07 21:44:24 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/23 17:00:37 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+/* a function to check if stack a is sorted and stack b empty */
 
 int	is_sorted(t_st a, t_st b)
 {

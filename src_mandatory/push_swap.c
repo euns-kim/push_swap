@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/21 21:18:55 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/23 19:03:46 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ int	main(int argc, char **argv)
 	else
 		sort_greedy(&ps);
 	print_stacks(ps.a, ps.b);
+	if (is_sorted(ps.a, ps.b))
+	{
+		free_before_terminating(&ps);
+		return (EXIT_FAILURE);
+	}
 	free_before_terminating(&ps);
 	return (EXIT_SUCCESS);
 }
