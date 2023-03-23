@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 17:18:39 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/23 18:51:48 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/23 21:04:11 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,12 @@ void	count_ra_rra(t_cc *curr, t_st a, size_t element_to_push)
 	size_t	insertion_point;
 
 	insertion_point = 0;
-	if (stack_a_is_sorted(a) == 0 && element_to_push > a.elements[a.back])
+	if (a.size == 0 || (stack_a_is_sorted(a) == 0 && element_to_push > a.elements[a.back]) \
+	|| (stack_a_is_sorted(a) == 0 && element_to_push < a.elements[a.front]))
 		return ;
 	if (element_to_push > a.elements[a.front])
 		insertion_point = search_from_front(a, element_to_push);
-	else if (element_to_push < a.elements[a.back])
+	else
 		insertion_point = search_from_back(a, element_to_push);
 	if (insertion_point <= a.size / 2)
 		curr->ra = insertion_point;
@@ -90,7 +91,7 @@ void	count_rb_rrb(t_st b, size_t b_idx, t_cc *curr)
 	curr->rb = get_index_from_0(b, b_idx);
 	if (curr->rb > b.size / 2)
 	{
-		curr->rrb = b.size - curr->rb - 1;
+		curr->rrb = b.size - curr->rb;
 		curr->rb = 0;
 	}
 }

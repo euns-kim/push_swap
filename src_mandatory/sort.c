@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:38:10 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/23 19:05:55 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/23 21:06:21 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	stack_a_is_sorted(t_st a)
 
 	i = 0;
 	idx = a.front;
-	if (a.size == 0)
+	if (a.size == 0 || a.size == 1)
 		return (EXIT_SUCCESS);
 	while (i < a.size - 1)
 	{
