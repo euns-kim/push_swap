@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:44:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/23 19:06:15 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/23 22:31:11 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,5 @@ int		is_sorted(t_st a, t_st b);
 void	free_array(char	**ptr);
 void	free_p(char *p);
 void	free_before_terminating(t_ps *ps);
-
-/** for testing (to be deleted) **/
-void	print_stacks(t_st a, t_st b);
 
 #endif

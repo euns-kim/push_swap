@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:46:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/12 22:04:04 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/23 22:18:13 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ int	split_and_error_check(t_ps *ps, char *input)
 	if (input_splitted == NULL)
 		return (EXIT_FAILURE);
 	arr_len = get_arr_len(input_splitted);
-	if (arr_len < 2)
-		return (EXIT_FAILURE);
 	tmp_arr = ft_calloc(arr_len, sizeof(int));
 	if (tmp_arr == NULL)
 		return (EXIT_FAILURE);
@@ -102,7 +100,7 @@ int	init_program(t_ps *ps, int argc, char **argv)
 	{
 		if (split_and_error_check(ps, argv[1]))
 		{
-			write(STDERR_FILENO, "Error\n", 7);
+			write(STDERR_FILENO, "Error\n", 6);
 			return (EXIT_FAILURE);
 		}
 	}
@@ -110,7 +108,7 @@ int	init_program(t_ps *ps, int argc, char **argv)
 	{
 		if (argv_error_check(ps, argc, argv))
 		{
-			write(STDERR_FILENO, "Error\n", 7);
+			write(STDERR_FILENO, "Error\n", 6);
 			return (EXIT_FAILURE);
 		}
 	}

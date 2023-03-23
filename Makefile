@@ -6,7 +6,7 @@
 #    By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/21 14:17:41 by eunskim           #+#    #+#              #
-#    Updated: 2023/03/23 19:00:40 by eunskim          ###   ########.fr        #
+#    Updated: 2023/03/23 22:31:36 by eunskim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,6 @@ SRCS_ESSENTIAL		:= $(addprefix $(SRC_DIR_ESSENTIAL)/, \
 						operations.c \
 						double_operations.c \
 						queue.c \
-						test_printing.c \
 						is_sorted.c)
 OBJS_ESSENTIAL 		:= $(SRCS_ESSENTIAL:.c=.o)						
 

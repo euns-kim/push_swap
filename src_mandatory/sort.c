@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:38:10 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/23 21:06:21 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/23 21:40:17 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	sort_greedy(t_ps *ps)
 	t_cc	opt;
 	size_t	final_rotation;
 
+	if (is_sorted(ps->a, ps->b) == 0)
+		return ;
 	calculate_pivots(ps);
 	partitioning(ps);
 	while (ps->b.size)
