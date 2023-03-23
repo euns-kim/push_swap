@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:03:46 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/23 22:28:53 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/23 22:39:32 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,14 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (init_program(&ps, argc, argv))
 		return (EXIT_FAILURE);
-	if (ps.a.size != 1)
+	if (ps.a.max_size < 6)
+		mini_sorting(&ps);
+	else
+		sort_greedy(&ps);
+	if (is_sorted(ps.a, ps.b))
 	{
-		if (ps.a.max_size < 6)
-			mini_sorting(&ps);
-		else
-			sort_greedy(&ps);
-		if (is_sorted(ps.a, ps.b))
-		{
-			free_before_terminating(&ps);
-			return (EXIT_FAILURE);
-		}
+		free_before_terminating(&ps);
+		return (EXIT_FAILURE);
 	}
 	free_before_terminating(&ps);
 	return (EXIT_SUCCESS);
