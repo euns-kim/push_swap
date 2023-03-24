@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 21:42:27 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/23 19:01:36 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/24 12:09:22 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // pivot[1] < n :  ra
 // pivot[0] < n <= pivot[1] : pb
-// n <= pivot[0] : pb && rb
+// n <= pivot[0] : pb (&& rb)
 
 // partitioning into three parts with pivots
 // while pushing all elements to stack b

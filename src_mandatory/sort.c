@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 20:38:10 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/23 21:40:17 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/24 12:09:45 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // rb = how many times one should call
 // next_idx function to get the actual index
 // when rb is bigger than b.size / 2
-// rrb = b.size - rb - 1?
+// rb = 0, rrb = b.size - rb
 // ra and rra = find where to insert
 
 int	stack_a_is_sorted(t_st a)
