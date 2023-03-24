@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 22:17:57 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/23 22:19:42 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/24 15:48:07 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	read_command(t_ps *ps)
 		{
 			free(line);
 			write(STDERR_FILENO, "Error\n", 6);
-			return (EXIT_FAILURE);
+			free_before_terminating(ps);
+			exit(EXIT_FAILURE);
 		}
 		free(line);
 		line = get_next_line(STDIN_FILENO);

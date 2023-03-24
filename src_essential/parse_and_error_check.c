@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:46:48 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/23 22:18:13 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/24 15:47:28 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	split_and_error_check(t_ps *ps, char *input)
 	size_t		arr_len;
 
 	input_splitted = ft_split(input, ' ');
-	if (input_splitted == NULL)
+	if (input_splitted == NULL || !input_splitted[0])
 		return (EXIT_FAILURE);
 	arr_len = get_arr_len(input_splitted);
 	tmp_arr = ft_calloc(arr_len, sizeof(int));
