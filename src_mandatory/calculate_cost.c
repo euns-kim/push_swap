@@ -6,7 +6,7 @@
 /*   By: eunskim <eunskim@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/19 17:18:39 by eunskim           #+#    #+#             */
-/*   Updated: 2023/03/23 21:04:11 by eunskim          ###   ########.fr       */
+/*   Updated: 2023/03/24 12:13:53 by eunskim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ void	count_ra_rra(t_cc *curr, t_st a, size_t element_to_push)
 	size_t	insertion_point;
 
 	insertion_point = 0;
-	if (a.size == 0 || (stack_a_is_sorted(a) == 0 && element_to_push > a.elements[a.back]) \
+	if (a.size == 0 \
+	|| (stack_a_is_sorted(a) == 0 && element_to_push > a.elements[a.back]) \
 	|| (stack_a_is_sorted(a) == 0 && element_to_push < a.elements[a.front]))
 		return ;
 	if (element_to_push > a.elements[a.front])
